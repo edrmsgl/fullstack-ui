@@ -1,26 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@theme {
+  --font-roboto: "Roboto", sans-serif; 
+  --font-lato: "Lato", sans-serif; 
+  --color-menuBlue: #C3EBFA;
+  --color-rightSide: #f7f8fa;
+  --color-lightBlue: #cfceff;
+  --color-lightYellow: #fae27c;
+  --color-agendaFirst: #f1f0ff;
+  --color-agendaSecond: #fdf6d8;
+  --color-agendaThird: #edf9fd;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-lato) !important;
+}
+
+.css-1cmet5c-MuiInputBase-root-MuiInput-root::after,
+.css-1cmet5c-MuiInputBase-root-MuiInput-root::before {
+  border: 0 !important
+}
+
+.react-calendar {
+  border: 0 !important;
+  width: 100%;
+}
+
+.react-calendar__tile--active {
+  background: var(--color-lightBlue) !important;
+}
+
+.react-calendar__tile:enabled:hover, .react-calendar__tile:enabled:focus {
+  background: var(--color-lightYellow) !important;
+  color: var(--color-black) !important
+}
+
+abbr:where([title]) {
+  text-decoration: none;
+}
+
+.css-1dc80h3-MuiTableCell-root, .css-3ssuu9-MuiTableCell-root {
+  border: 0 !important;
+}
+
+.css-y2ff7i-MuiPaper-root-MuiTableContainer-root {
+  box-shadow: none !important;
+}
+
+.css-1dc80h3-MuiTableCell-root:first-child {
+  padding-inline-start: 0 !important;
+}
+
+.css-1dc80h3-MuiTableCell-root:last-child {
+  padding-inline-end: 0 !important;
 }
