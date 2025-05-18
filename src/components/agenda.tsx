@@ -35,7 +35,6 @@ const AgendaData = [
   },
 ];
 
-
 const agendaBgClass = (index: number) => {
   switch (index % 3) {
     case 0:

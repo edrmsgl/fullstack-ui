@@ -98,4 +98,4 @@ const Finance = ({ title } :{ title: string }) => {
   )
 }
 
-export default Finance
+export default Finance;

@@ -1,1 +1,1 @@
-MongoURL= "mongodb+srv://drmsgl:xCRjFhYQplxxNdNm@drmsgl.abqme.mongodb.net/"
+MongoURL=mongodb+srv://drmsgl:<db_password>@drmsgl.abqme.mongodb.net

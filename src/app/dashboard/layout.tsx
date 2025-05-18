@@ -1,6 +1,5 @@
 import Menu from "@/components/menu";
 import TopBar from "@/components/topbar";
-
 export default function dashboardLayout({
   children,
 }: Readonly<{

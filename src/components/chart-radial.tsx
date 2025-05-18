@@ -73,4 +73,4 @@ const ChartRadial = ({ title }: { title: string }) => {
   )
 }
 
-export default ChartRadial
+export default ChartRadial;

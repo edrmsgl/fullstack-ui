@@ -10,4 +10,4 @@ const Title = ({ title, icon }: { title: string, icon?: boolean }) => {
     )
 }
 
-export default Title
+export default Title;

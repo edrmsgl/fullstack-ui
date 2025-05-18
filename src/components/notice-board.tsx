@@ -42,7 +42,6 @@ const rows = [
   createData('https://randomuser.me/api/portraits/men/5.jpg', 'World Geography', 'Challenge', '10/05/2024', 'By Mr. White', 'Geography Teacher', '90'),
   createData('https://randomuser.me/api/portraits/men/6.jpg', 'Music Performance', 'Festival', '11/12/2024', 'By Mrs. Green', 'Music Teacher', '60'),
   createData('https://randomuser.me/api/portraits/women/3.jpg', 'Theatre Arts', 'Performance', '12/01/2024', 'By Mr. Black', 'Theatre Teacher', '36'),
-  createData('https://randomuser.me/api/portraits/men/7.jpg', 'Tech Contest', 'Competition', '01/18/2025', 'By Mr. Davis', 'Computer Science Teacher', '2'),
 ];
 
 const NoticeBoard = ({ title }: { title: string }) => {

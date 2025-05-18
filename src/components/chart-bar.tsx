@@ -57,4 +57,4 @@ const ChartBar = ({ title }: { title: string }) => {
   )
 }
 
-export default ChartBar
+export default ChartBar;

@@ -79,4 +79,4 @@ const Messages = ({ title }: { title: string }) => {
   )
 }
 
-export default Messages
+export default Messages;

@@ -22,4 +22,4 @@ const UserCard = ({percent, total, type}:{ percent?: number, total?: string, typ
   )
 }
 
-export default UserCard
+export default UserCard;

@@ -17,4 +17,4 @@ const UserCalendar = ({ title }: { title: string }) => {
     )
 }
 
-export default UserCalendar
+export default UserCalendar;

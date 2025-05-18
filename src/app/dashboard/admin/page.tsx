@@ -16,7 +16,7 @@ const UserCardData = [
   { percent: 5, total: '95,800', type: 'Awards' },
 ];
 
-const AdminPage = () => {
+const Admin = () => {
   return (
     <div className='flex flex-col md:flex-row mt-5 gap-5'>
       <div className='w-full lg:w-3/4'>
@@ -62,4 +62,4 @@ const AdminPage = () => {
   )
 }
 
-export default AdminPage
+export default Admin;

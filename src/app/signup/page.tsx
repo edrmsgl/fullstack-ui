@@ -8,11 +8,11 @@ const SingUp = () => {
     const [name, setName] = useState('');
     const [password, setPasword] = useState('');
 
-    const handleSubmit = async (e: any) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         try {
-            const res = await axios.post("/api/users", {
+            const res = await axios.post("api/users", {
                 name,
                 password,
             });
@@ -39,4 +39,4 @@ const SingUp = () => {
     )
 }
 
-export default SingUp 
+export default SingUp;

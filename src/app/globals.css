@@ -18,6 +18,7 @@ body {
   font-family: var(--font-lato) !important;
 }
 
+
 .css-1cmet5c-MuiInputBase-root-MuiInput-root::after,
 .css-1cmet5c-MuiInputBase-root-MuiInput-root::before {
   border: 0 !important

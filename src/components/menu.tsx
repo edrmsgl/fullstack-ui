@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { Children } from 'react'
+import React from 'react'
 import HomeIcon from '@mui/icons-material/Home';
 import SchoolIcon from '@mui/icons-material/School';
 import GroupIcon from '@mui/icons-material/Group';
@@ -66,4 +66,4 @@ const Menu = () => {
   )
 }
 
-export default Menu
+export default Menu;
