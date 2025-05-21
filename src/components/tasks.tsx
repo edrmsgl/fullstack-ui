@@ -1,6 +1,5 @@
 import React from 'react'
 import Title from './title'
-import { Checkbox} from '@mui/material';
 
 const TasksData = [
   { name: "Emily Brown", date: "2025-05-12", status: "Started" },
@@ -41,7 +40,6 @@ const Tasks = ({ title }: { title: string }) => {
         {TasksData.map((taskItem, index) => (
           <div className='my-2' key={index}>
             <div className={'flex justify-center items-center rounded-md gap-2.5 relative'}>
-              <Checkbox className='' />
               <div className='w-2/3'>
                 <div className='font-bold text-[16px]'>{taskItem.name}</div>
                 <div className='text-gray-700 text-[12px]'>{taskItem.date}</div>
