@@ -32,16 +32,7 @@ const rows = [
   createData('https://randomuser.me/api/portraits/men/5.jpg', 'World Geography', 'Challenge', '10/05/2024', 'By Mr. White', 'Geography Teacher', '90'),
   createData('https://randomuser.me/api/portraits/men/6.jpg', 'Music Performance', 'Festival', '11/12/2024', 'By Mrs. Green', 'Music Teacher', '60'),
   createData('https://randomuser.me/api/portraits/women/3.jpg', 'Theatre Arts', 'Performance', '12/01/2024', 'By Mr. Black', 'Theatre Teacher', '36'),
-  createData('https://randomuser.me/api/portraits/men/7.jpg', 'Tech Contest', 'Competition', '01/18/2025', 'By Mr. Davis', 'Computer Science Teacher', '2'),
-  createData('https://randomuser.me/api/portraits/men/1.jpg', 'Math Olympiad', 'Competition', '04/02/2024', 'By My. Jackson', 'Math Teacher', '30'),
-  createData('https://randomuser.me/api/portraits/men/2.jpg', 'Science Exploration', 'Fair', '05/15/2024', 'By Mrs. Smith', 'Science Teacher', '78'),
-  createData('https://randomuser.me/api/portraits/women/1.jpg', 'Tech Training', 'Workshop', '06/10/2024', 'By Mr. Williams', 'Computer Science Teacher', '12'),
-  createData('https://randomuser.me/api/portraits/men/3.jpg', 'Historical Knowledge', 'Quiz', '07/12/2024', 'By Dr. Brown', 'History Teacher', '14'),
-  createData('https://randomuser.me/api/portraits/women/2.jpg', 'Creative Arts', 'Exhibition', '08/01/2024', 'By Ms. Turner', 'Art Teacher', '25'),
-  createData('https://randomuser.me/api/portraits/men/4.jpg', 'Sports Competition', 'Competition', '09/20/2024', 'By Coach Lee', 'Physical Education Teacher', '5'),
-  createData('https://randomuser.me/api/portraits/men/5.jpg', 'World Geography', 'Challenge', '10/05/2024', 'By Mr. White', 'Geography Teacher', '90'),
-  createData('https://randomuser.me/api/portraits/men/6.jpg', 'Music Performance', 'Festival', '11/12/2024', 'By Mrs. Green', 'Music Teacher', '60'),
-  createData('https://randomuser.me/api/portraits/women/3.jpg', 'Theatre Arts', 'Performance', '12/01/2024', 'By Mr. Black', 'Theatre Teacher', '36'),
+  createData('https://randomuser.me/api/portraits/men/7.jpg', 'Tech Contest', 'Competition', '01/18/2025', 'By Mr. Davis', 'Computer Science Teacher', '2')
 ];
 
 const NoticeBoard = ({ title }: { title: string }) => {

@@ -1,26 +1,33 @@
 'use client';
 import React, { useState } from 'react';
-import axios from 'axios';
 import Image from 'next/image';
 import Link from 'next/link';
 
 const SingUp = () => {
-    const [name, setName] = useState('');
-    const [password, setPasword] = useState('');
+const [name, setName] = useState('');
+const [password, setPassword] = useState('');
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
 
-        try {
-            const res = await axios.post("api/users", {
-                name,
-                password,
-            });
-            console.log(res.data);
-        } catch (error) {
-            console.error(error);
-        }
-    };
+  try {
+    const res = await fetch('/api/users', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, password }),
+    });
+    if (!res.ok) {
+      const errorData = await res.json();
+      throw new Error(errorData.message || 'Bir hata oluştu');
+    }
+
+    const result = await res.json();
+    console.log('Kullanıcı başarıyla eklendi:', result);
+  } catch (error) {
+    console.error('İstek başarısız:', error);
+  }
+};
+
     return (
         <div className='relative w-screen h-screen'>
             <Image src="https://pagedone.io/asset/uploads/1702362010.png" alt="gradient background image" className="w-full h-full object-cover fixed" width={100} height={100} unoptimized />
@@ -29,7 +36,7 @@ const SingUp = () => {
                     <form onSubmit={handleSubmit} className="lg:p-11 p-7 mx-auto">
                         <h1 className="text-gray-900 text-center font-manrope text-3xl font-bold leading-10 mb-11">Welcome to SignUp</h1>
                         <input type="name" onChange={(e) => setName(e.target.value)} className="w-full h-12 text-gray-900 placeholder:text-gray-400 text-lg font-normal leading-7 rounded-full border-gray-300 border shadow-sm focus:outline-none px-4 mb-6" placeholder="Username" />
-                        <input type="password" onChange={(e) => setPasword(e.target.value)} className="w-full h-12 text-gray-900 placeholder:text-gray-400 text-lg font-normal leading-7 rounded-full border-gray-300 border shadow-sm focus:outline-none px-4 mb-1" placeholder="Password" />
+                        <input type="password" onChange={(e) => setPassword(e.target.value)} className="w-full h-12 text-gray-900 placeholder:text-gray-400 text-lg font-normal leading-7 rounded-full border-gray-300 border shadow-sm focus:outline-none px-4 mb-1" placeholder="Password" />
                         <button className="w-full h-12 text-white text-center text-base font-semibold leading-6 rounded-full hover:bg-indigo-200 transition-all duration-700 bg-indigo-600 shadow-sm mb-11 mt-6 cursor-pointer">Create User</button>
                         <Link href={'/signin'} className="flex justify-center text-gray-900 text-base font-medium leading-6"> Don’t have an account? <span className="text-indigo-600 font-semibold pl-3"> Sign In</span></Link>
                     </form>

@@ -57,3 +57,7 @@ abbr:where([title]) {
 .css-1dc80h3-MuiTableCell-root:last-child {
   padding-inline-end: 0 !important;
 }
+
+.css-imrjgg-MuiButtonBase-root-MuiCheckbox-root {
+  padding-inline-start: 0 !important;
+}

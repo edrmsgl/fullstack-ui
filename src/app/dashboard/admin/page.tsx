@@ -8,6 +8,7 @@ import Agenda from '@/components/agenda';
 import Messages from '@/components/massages';
 import Finance from '@/components/finance';
 import NoticeBoard from '@/components/notice-board';
+import Tasks from '@/components/tasks';
 
 const UserCardData = [
   { percent: 15, total: '124,648', type: 'Students' },
@@ -42,7 +43,7 @@ const Admin = () => {
             <NoticeBoard title='Notice Board' />
           </div>
           <div className='w-full lg:w-1/3'>
-            2
+            <Tasks title='Tasks' />
           </div>
         </div>
 
