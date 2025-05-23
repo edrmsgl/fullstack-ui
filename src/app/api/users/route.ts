@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import clientPromise from "../../../lib/mongodb";
+import bcrypt from "bcrypt";
 
 // GET: Kullanıcıları listele
 export async function GET() {
@@ -17,15 +18,16 @@ export async function GET() {
 // POST: Yeni kullanıcı ekle
 export async function POST(request: NextRequest) {
   try {
-    const { name, email } = await request.json();
+    const { name, email, password } = await request.json();
+    const hashedPassword = await bcrypt.hash(password, 10)
 
-    if (!name || !email) {
+    if (!name || !email || !password) {
       return NextResponse.json({ message: "Name and email are required" }, { status: 400 });
     }
 
     const client = await clientPromise;
     const db = client.db("deneme"); // 👈 burada da güncellendi
-    const result = await db.collection("users").insertOne({ name, email });
+    const result = await db.collection("users").insertOne({ name, email, password: hashedPassword });
 
     return NextResponse.json({ message: "User added", userId: result.insertedId }, { status: 201 });
   } catch (error) {

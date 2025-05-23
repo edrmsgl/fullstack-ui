@@ -4,6 +4,7 @@ import clientPromise from "../../../lib/mongodb";
 type User = {
   name: string;
   email: string;
+  password: number;
 };
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -15,9 +16,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const users = await collection.find({}).toArray();
     res.status(200).json(users);
   } else if (req.method === "POST") {
-    const { name, email } = req.body;
+    const { name, email, password } = req.body;
 
-    if (!name || !email) {
+    if (!name || !email || !password) {
       res.status(400).json({ message: "Name and email are required" });
       return;
     }
@@ -25,6 +26,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const newUser: User = {
       name,
       email,
+      password
     };
 
     const result = await collection.insertOne(newUser);
