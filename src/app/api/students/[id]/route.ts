@@ -7,14 +7,14 @@ export async function DELETE(_id: NextRequest, { params }: { params: { id: strin
   try {
     const client = await clientPromise;
     const db = client.db("deneme");
-    const users = db.collection("users");
+    const students = db.collection("students");
 
-    const result = await users.deleteOne({ _id: new ObjectId(params.id) });
+    const result = await students.deleteOne({ _id: new ObjectId(params.id) });
 
     if (result.deletedCount === 1) {
-      return NextResponse.json({ message: "Kullanıcı silindi" }, { status: 200 });
+      return NextResponse.json({ message: "Öğrenci silindi" }, { status: 200 });
     } else {
-      return NextResponse.json({ message: "Kullanıcı bulunamadı" }, { status: 404 });
+      return NextResponse.json({ message: "Öğrenci bulunamadı" }, { status: 404 });
     }
   } catch (error) {
     return NextResponse.json({ message: "Sunucu hatası", error }, { status: 500 });

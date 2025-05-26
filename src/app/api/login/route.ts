@@ -1,7 +1,7 @@
 // app/api/login/route.ts
 
 import { NextRequest, NextResponse } from "next/server";
-import clientPromise from "@/lib/mongodb";
+import clientPromise from "@/lib/dbConnection";
 import bcrypt from "bcrypt";
 
 export async function POST(req: NextRequest) {

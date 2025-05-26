@@ -1,11 +1,11 @@
-import { NextRequest, NextResponse } from "next/server";
-import clientPromise from "../../../lib/mongodb";
+import { NextResponse } from "next/server";
+import connectDB from "@/lib/dbConnection";
 import bcrypt from "bcrypt";
 
-// GET: Kullanıcıları listele
+//GET: Kullanıcıları listele
 export async function GET() {
   try {
-    const client = await clientPromise;
+    const client = await connectDB;
     const db = client.db("deneme"); // 👈 burada güncellendi
     const users = await db.collection("users").find({}).toArray();
     return NextResponse.json(users);
@@ -25,7 +25,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ message: "Name and email are required" }, { status: 400 });
     }
 
-    const client = await clientPromise;
+    const client = await connectDB;
     const db = client.db("deneme"); // 👈 burada da güncellendi
     const result = await db.collection("users").insertOne({ name, email, password: hashedPassword });
 

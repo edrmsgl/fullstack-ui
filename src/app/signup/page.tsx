@@ -1,30 +1,13 @@
 'use client';
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Image from 'next/image';
 
-type User = {
-  _id: string;
-  name: string;
-  email: string;
-  password: number;
-};
-
 const SingUp = () => {
-  const [users, setUsers] = useState<User[]>([]);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const fetchUsers = async () => {
-    const res = await fetch("/api/users");
-    const data = await res.json();
-    setUsers(data);
-  };
-
-  useEffect(() => {
-    fetchUsers();
-  }, []);
 
   const isValidEmail = (email: string) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -52,7 +35,6 @@ const SingUp = () => {
       setName("");
       setEmail("");
       setPassword("");
-      fetchUsers();
     } else {
       const error = await res.json();
       alert(error.message || "Kullanıcı eklenemedi.");
@@ -60,31 +42,6 @@ const SingUp = () => {
     setLoading(false);
   };
 
-
-  const handleDeleteUser = async (id: string) => {
-    const confirmed = confirm("Bu kullanıcıyı silmek istediğinize emin misiniz?");
-    if (!confirmed) return;
-
-    try {
-      const res = await fetch('/api/users/' + id, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ id }),
-      });
-
-      if (res.ok) {
-        alert("Kullanıcı başarıyla silindi.");
-        fetchUsers(); // Listeyi yenile
-      } else {
-        const error = await res.json();
-        alert(error.message || "Kullanıcı silinirken hata oluştu.");
-      }
-    } catch (error) {
-      alert("Beklenmeyen bir hata oluştu: " + String(error));
-    }
-  };
 
   return (
     <div className='relative w-screen h-screen'>
@@ -99,13 +56,6 @@ const SingUp = () => {
             <button onClick={handleAddUser} disabled={loading} className="w-full h-12 text-white text-center text-base font-semibold leading-6 rounded-full hover:bg-indigo-200 transition-all duration-700 bg-indigo-600 shadow-sm mt-6 cursor-pointer">Kullanıcı Oluştur</button>
           </div>
         </div>
-
-        {users && users.map((user) => (
-          <li key={user._id} style={{ marginBottom: 10 }}>
-            {user.name} ({user.email}){" "}
-            <button onClick={() => handleDeleteUser(user._id)}>Sil</button>
-          </li>
-        ))}
       </div>
     </div>
   );

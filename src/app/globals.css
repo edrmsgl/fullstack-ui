@@ -12,6 +12,7 @@
   --color-agendaFirst: #f1f0ff;
   --color-agendaSecond: #fdf6d8;
   --color-agendaThird: #edf9fd;
+  --color-btn: #DF97FD;
 }
 
 body {
@@ -60,4 +61,10 @@ abbr:where([title]) {
 
 .css-imrjgg-MuiButtonBase-root-MuiCheckbox-root {
   padding-inline-start: 0 !important;
+}
+
+.css-74d805-MuiButtonBase-root-MuiButton-root {
+  padding: 0 !important;
+  min-width: 0 !important;
+  box-shadow: none !important;
 }
