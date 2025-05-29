@@ -20,8 +20,8 @@ const MenuItems = [
     parentTitle: 'HOME',
     items: [
       { icon: <HomeIcon />, title: 'Dashboard', url: '/dashboard' },
-      { icon: <SchoolIcon />, title: 'Teachers', url: '/teacher' },
-      { icon: <GroupIcon />, title: 'Students', url: '/student' },
+      { icon: <SchoolIcon />, title: 'Teachers', url: '/dashboard/teacher' },
+      { icon: <GroupIcon />, title: 'Students', url: '/dashboard/student' },
       { icon: <Diversity3Icon />, title: 'Attendance', url: '/attendance' },
       { icon: <MonetizationOnOutlinedIcon />, title: 'Finance', url: '/finance' },
       { icon: <AssignmentOutlinedIcon />, title: 'Notice', url: '/notice' },
@@ -34,7 +34,7 @@ const MenuItems = [
     parentTitle: 'OTHER',
     items: [
       { icon: <AccountBoxOutlinedIcon />, title: 'Profile', url: '/profile' },
-      { icon: <SettingsOutlinedIcon />, title: 'Settings', url: '/settings' },
+      { icon: <SettingsOutlinedIcon />, title: 'Settings', url: '/dashboard/settings' },
       { icon: <LogoutOutlinedIcon />, title: 'Log out', url: '/logout' },
     ]
   }

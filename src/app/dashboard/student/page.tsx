@@ -111,6 +111,7 @@ const Student = () => {
 
       if (res.ok) {
         alert("Öğrenci başarıyla silindi.");
+        handleCloseConfirm();
         fetchStudents();
       } else {
         const error = await res.json();
@@ -220,7 +221,7 @@ const Student = () => {
             <input disabled={loading} type="text" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder='Phone' className='w-full h-10 border border-gray-300 rounded-md px-3 mb-3 outline-0' />
             <textarea disabled={loading} placeholder='Address' value={address} onChange={(e) => setAddress(e.target.value)} className='w-full h-20 border border-gray-300 rounded-md px-3 mb-3'></textarea>
           </div>
-          <button onClick={handleAddUser} disabled={loading} className="w-full h-12 text-white text-center text-base font-semibold leading-6 rounded-full hover:bg-indigo-200 transition-all duration-700 bg-indigo-600 shadow-sm mt-4 cursor-pointer">Sil</button>
+          <button onClick={handleAddUser} disabled={loading} className="w-full h-12 text-white text-center text-base font-semibold leading-6 rounded-full hover:bg-indigo-200 transition-all duration-700 bg-indigo-600 shadow-sm mt-4 cursor-pointer">EKLE</button>
         </Box>
       </Modal>
     </div>

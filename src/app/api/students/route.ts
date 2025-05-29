@@ -15,7 +15,7 @@ export async function GET() {
 }
 
 // POST: Yeni öğrenci ekle
-export async function POST(request: NextRequest) {
+export async function POST(request: Request) {
   try {
     const { name, surname, email, classroom, dob, phone, address } = await request.json();
 
