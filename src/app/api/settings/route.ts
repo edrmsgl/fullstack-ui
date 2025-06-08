@@ -5,7 +5,7 @@ import connectDB from "@/lib/dbConnection";
 export async function GET() {
   try {
     const client = await connectDB;
-    const db = client.db("deneme");
+    const db = client.db("fullstackui");
     const settings = await db.collection("settings").find({}).toArray();
     return NextResponse.json(settings);
   } catch (error) {
@@ -17,15 +17,15 @@ export async function GET() {
 // POST: Yeni Sayfa ekle
 export async function POST(request: Request) {
   try {
-    const { title, category, path } = await request.json();
+    const { title, icon , category, path } = await request.json();
 
-    if (!title || !category || !path ) {
+    if (!title || !icon || !category || !path ) {
       return NextResponse.json({ message: "All fields are required" }, { status: 400 });
     }
 
     const client = await connectDB;
-    const db = client.db("deneme");
-    const result = await db.collection("settings").insertOne({ title, category, path });
+    const db = client.db("fullstackui");
+    const result = await db.collection("settings").insertOne({ title, icon, category, path });
 
     return NextResponse.json({ message: "Sayfa eklenmiştir.", userId: result.insertedId }, { status: 201 });
   } catch (error) {

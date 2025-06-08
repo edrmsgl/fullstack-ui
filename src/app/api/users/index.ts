@@ -9,7 +9,7 @@ type User = {
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const client = await clientPromise;
-  const db = client.db("deneme");
+  const db = client.db("fullstackui");
   const collection = db.collection("users");
 
   if (req.method === "GET") {

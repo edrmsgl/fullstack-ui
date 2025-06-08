@@ -12,7 +12,7 @@ export async function POST(req: NextRequest) {
     }
 
     const client = await clientPromise;
-    const db = client.db("deneme");
+    const db = client.db("fullstackui");
     const user = await db.collection("users").findOne({ email });
 
     if (!user) {

@@ -51,10 +51,6 @@ abbr:where([title]) {
   box-shadow: none !important;
 }
 
-.css-1dc80h3-MuiTableCell-root:first-child {
-  padding-inline-start: 0 !important;
-}
-
 .css-1dc80h3-MuiTableCell-root:last-child {
   padding-inline-end: 0 !important;
 }

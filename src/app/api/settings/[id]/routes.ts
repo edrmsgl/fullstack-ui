@@ -6,10 +6,10 @@ import clientPromise from "../../../../lib/dbConnection";
 export async function DELETE(_id: NextRequest, { params }: { params: { id: string } }) {
   try {
     const client = await clientPromise;
-    const db = client.db("deneme");
-    const sidemenu = db.collection("settings");
+    const db = client.db("fullstackui");
+    const settings = db.collection("settings");
 
-    const result = await sidemenu.deleteOne({ _id: new ObjectId(params.id) });
+    const result = await settings.deleteOne({ _id: new ObjectId(params.id) });
 
     if (result.deletedCount === 1) {
       return NextResponse.json({ message: "Menu silindi" }, { status: 200 });

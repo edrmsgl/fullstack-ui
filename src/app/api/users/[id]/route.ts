@@ -6,7 +6,7 @@ import clientPromise from "../../../../lib/dbConnection";
 export async function DELETE(_id: NextRequest, { params }: { params: { id: string } }) {
   try {
     const client = await clientPromise;
-    const db = client.db("deneme");
+    const db = client.db("fullstackui");
     const users = db.collection("users");
 
     const result = await users.deleteOne({ _id: new ObjectId(params.id) });

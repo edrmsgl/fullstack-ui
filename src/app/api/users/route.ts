@@ -6,7 +6,7 @@ import bcrypt from "bcrypt";
 export async function GET() {
   try {
     const client = await connectDB;
-    const db = client.db("deneme"); // 👈 burada güncellendi
+    const db = client.db("fullstackui");
     const users = await db.collection("users").find({}).toArray();
     return NextResponse.json(users);
   } catch (error) {
@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
     }
 
     const client = await connectDB;
-    const db = client.db("deneme"); // 👈 burada da güncellendi
+    const db = client.db("fullstackui");
     const result = await db.collection("users").insertOne({ name, email, password: hashedPassword });
 
     return NextResponse.json({ message: "User added", userId: result.insertedId }, { status: 201 });

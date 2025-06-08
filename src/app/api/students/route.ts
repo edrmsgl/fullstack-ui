@@ -5,7 +5,7 @@ import connectDB from "@/lib/dbConnection";
 export async function GET() {
   try {
     const client = await connectDB;
-    const db = client.db("deneme"); // 👈 burada güncellendi
+    const db = client.db("fullstackui"); // 👈 burada güncellendi
     const students = await db.collection("students").find({}).toArray();
     return NextResponse.json(students);
   } catch (error) {
@@ -19,13 +19,13 @@ export async function POST(request: Request) {
   try {
     const { name, surname, email, classroom, dob, phone, address } = await request.json();
 
-    if (!name || !email || !surname || !classroom || !dob || !phone || !address) {
+    if (!name || !email || !surname || !picture || !classroom || !dob || !phone || !address) {
       return NextResponse.json({ message: "All fields are required" }, { status: 400 });
     }
 
     const client = await connectDB;
-    const db = client.db("deneme");
-    const result = await db.collection("students").insertOne({ name, surname, email, classroom, dob, phone, address });
+    const db = client.db("fullstackui");
+    const result = await db.collection("students").insertOne({ name, surname, picture, email, classroom, dob, phone, address });
 
     return NextResponse.json({ message: "Student added", userId: result.insertedId }, { status: 201 });
   } catch (error) {
