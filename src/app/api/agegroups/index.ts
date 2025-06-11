@@ -28,7 +28,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       name, minAge, maxAge, description
     };
 
-    const result = await collection.insertOne(newStudents);
+    const result = await collection.insertOne(newAgeGroups);
     res.status(201).json(result);
   } else {
     res.setHeader("Allow", ["GET", "POST"]);
