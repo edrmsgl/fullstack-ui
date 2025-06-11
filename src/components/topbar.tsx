@@ -3,7 +3,7 @@ import React from 'react'
 import TextsmsIcon from '@mui/icons-material/Textsms';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import SearchIcon from '@mui/icons-material/Search';
-import { Input } from '@mui/material';
+import { Input, Tooltip } from '@mui/material';
 import Image from 'next/image';
 
 const TopBar = () => {
@@ -14,8 +14,13 @@ const TopBar = () => {
         <Input placeholder='Search' className='text-xs! min-w-60' />
       </div>
       <div className='userbar flex items-center justify-end gap-8'>
-        <div className='flex justify-center items-center rounded-full bg-white w-10 h-10 cursor-pointer'><TextsmsIcon /></div>
-        <div className='flex justify-center items-center rounded-full bg-white w-10 h-10 cursor-pointer relative'><NotificationsIcon />
+        <div className='flex justify-center items-center rounded-full bg-white w-10 h-10 cursor-pointer'>
+          <Tooltip title="Mesajlar">
+            <TextsmsIcon /></Tooltip></div>
+        <div className='flex justify-center items-center rounded-full bg-white w-10 h-10 cursor-pointer relative'>
+          <Tooltip title="Bildirimler">
+            <NotificationsIcon />
+          </Tooltip>
           <div className='absolute -right-2 -top-2 bg-indigo-600 w-6 h-6 text-white flex justify-center items-center rounded-full border-2 border-white text-sm'>5</div>
         </div>
         <div className='userFullName text-right leading-5'>

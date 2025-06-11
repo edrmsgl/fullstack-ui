@@ -4,11 +4,15 @@ import clientPromise from "../../../lib/dbConnection";
 type Students = {
   name: string;
   surname: string;
+  picture: string;
   email?: string;
-  classroom?: string;
   dob?: string;
   phone?: string;
   address?: string;
+  parentname: string;
+  parentsurname: string;
+  parentphone:string;
+  parentemail: string
 };
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -20,15 +24,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const users = await collection.find({}).toArray();
     res.status(200).json(users);
   } else if (req.method === "POST") {
-    const { name, surname, email, classroom, dob, phone, address } = req.body;
+    const { name, surname, email, picture, dob, phone, address, parentname, parentsurname, parentphone, parentemail } = req.body;
 
-    if (!name || !email || !surname || !classroom || !dob || !phone || !address) {
+    if (!name || !surname || !picture || !parentname || !parentsurname || !parentphone || !parentemail || !dob || !address) {
       res.status(400).json({ message: "All fields are required" });
       return;
     }
 
     const newStudents: Students = {
-      name, surname, email, classroom, dob, phone, address
+      name, surname, email, picture, dob, phone, address, parentname, parentsurname, parentphone, parentemail
     };
 
     const result = await collection.insertOne(newStudents);

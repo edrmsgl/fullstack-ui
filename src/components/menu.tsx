@@ -6,28 +6,28 @@ import HomeIcon from '@mui/icons-material/Home';
 import SchoolIcon from '@mui/icons-material/School';
 import GroupIcon from '@mui/icons-material/Group';
 import Diversity3Icon from '@mui/icons-material/Diversity3';
-import MonetizationOnOutlinedIcon from '@mui/icons-material/MonetizationOnOutlined';
-import AssignmentOutlinedIcon from '@mui/icons-material/AssignmentOutlined';
+import SportsIcon from '@mui/icons-material/Sports';
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import LocalLibraryOutlinedIcon from '@mui/icons-material/LocalLibraryOutlined';
+import OndemandVideoIcon from '@mui/icons-material/OndemandVideo';
+import LocalSeeIcon from '@mui/icons-material/LocalSee';
 import MarkUnreadChatAltOutlinedIcon from '@mui/icons-material/MarkUnreadChatAltOutlined';
-import AccountBoxOutlinedIcon from '@mui/icons-material/AccountBoxOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 
 const MenuItems = [
-  { icon: <HomeIcon />, title: 'Dashboard', url: '/dashboard' },
-  { icon: <SchoolIcon />, title: 'Teachers', url: '/dashboard/teacher' },
-  { icon: <GroupIcon />, title: 'Students', url: '/dashboard/student' },
-  { icon: <Diversity3Icon />, title: 'Attendance', url: '/attendance' },
-  { icon: <MonetizationOnOutlinedIcon />, title: 'Finance', url: '/finance' },
-  { icon: <AssignmentOutlinedIcon />, title: 'Notice', url: '/notice' },
-  { icon: <CalendarMonthIcon />, title: 'Calendar', url: '/calendar' },
-  { icon: <LocalLibraryOutlinedIcon />, title: 'Library', url: '/library' },
-  { icon: <MarkUnreadChatAltOutlinedIcon />, title: 'Message', url: '/message' },
-  { icon: <AccountBoxOutlinedIcon />, title: 'Profile', url: '/profile' },
-  { icon: <SettingsOutlinedIcon />, title: 'Settings', url: '/dashboard/settings' },
-  { icon: <LogoutOutlinedIcon />, title: 'Log out', url: '/logout' },
+  { icon: <HomeIcon />, title: 'Anasayfa', url: '/dashboard/admin' },
+  { icon: <SchoolIcon />, title: 'Eğitmenler', url: '/dashboard/teachers' },
+  { icon: <GroupIcon />, title: 'Öğrenciler', url: '/dashboard/students' },
+  { icon: <Diversity3Icon />, title: 'Yaş Grupları', url: '/dashboard/agegroups' },
+  { icon: <SportsIcon />, title: 'Spor Dalları', url: '/dashboard/branches' },
+  { icon: <CalendarMonthIcon />, title: 'Sezonlar & Yıllar', url: '/dashboard/seasons' },
+  { icon: <AttachMoneyIcon />, title: 'Ödemeler', url: '/dashboard/billings' },
+  { icon: <MarkUnreadChatAltOutlinedIcon />, title: 'Sosyal', url: '/dashboard/social' },
+  { icon: <LocalSeeIcon />, title: 'Resimler', url: '/dashboard/pictures' },
+  { icon: <OndemandVideoIcon />, title: 'Videolar', url: '/dashboard/videoos' },
+  { icon: <SettingsOutlinedIcon />, title: 'Ayarlar', url: '/dashboard/settings' },
+  { icon: <LogoutOutlinedIcon />, title: 'Çıkış', url: '/logout' },
 ];
 
 const Menu = () => {

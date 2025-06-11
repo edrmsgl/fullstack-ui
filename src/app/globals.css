@@ -64,3 +64,23 @@ abbr:where([title]) {
   min-width: 0 !important;
   box-shadow: none !important;
 }
+
+.css-lqwr9g-MuiPickersOutlinedInput-notchedOutline {
+  border: 0 !important;
+}
+
+.css-qru2u2-MuiPickersSectionList-root-MuiPickersInputBase-sectionsContainer-MuiPickersOutlinedInput-sectionsContainer {
+  padding: 0 !important;
+}
+
+.css-19qnlrw-MuiFormLabel-root-MuiInputLabel-root {
+  top: -8px !important;
+}
+
+.css-113d811-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+  display: none !important;
+}
+
+.css-1fb7els-MuiPickersSectionList-root-MuiPickersInputBase-sectionsContainer-MuiPickersOutlinedInput-sectionsContainer {
+  padding: 0 !important;
+} 
