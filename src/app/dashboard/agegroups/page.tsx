@@ -2,8 +2,7 @@
 import React from 'react';
 import { useState, useEffect } from "react";
 import Button from '@mui/material/Button';
-import SearchIcon from '@mui/icons-material/Search';
-import { Avatar, ButtonBase, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Drawer, Input, Paper } from '@mui/material';
+import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Drawer, Paper } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import Tooltip from '@mui/material/Tooltip';
@@ -42,17 +41,14 @@ const AgeGroups = () => {
   };
   const handleOpenConfirm = () => setConfirm(true);
   const handleCloseConfirm = () => setConfirm(false);
-  const fetchGroups = async () => {
+  const fetchAgeGroups = async () => {
     const res = await fetch("/api/agegroups");
     const data = await res.json();
     setagegroups(data);
   };
 
-  const [search, setSearch] = useState("");
-  const [searchInput, setSearchInput] = useState("");
-
   useEffect(() => {
-    fetchGroups();
+    fetchAgeGroups();
   }, []);
 
 
@@ -67,14 +63,14 @@ const AgeGroups = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ name, minAge, maxAge, description}),
+      body: JSON.stringify({ name, minAge, maxAge, description }),
     });
     if (res.ok) {
       setName("");
       setminAge("");
       setmaxAge("");
       setdescription("");
-      fetchGroups();
+      fetchAgeGroups();
       handleClose('right')();
       alert("Yaş grubu başarıyla eklendi.");
     } else {
@@ -97,7 +93,7 @@ const AgeGroups = () => {
       if (res.ok) {
         alert("Yaş grubu başarıyla silindi.");
         handleCloseConfirm();
-        fetchGroups();
+        fetchAgeGroups();
       } else {
         const error = await res.json();
         alert(error.message || "Yaş grubu silinirken hata oluştu.");
@@ -107,19 +103,6 @@ const AgeGroups = () => {
     }
   };
 
-  const filteredStudents = agegroups.filter(
-    s =>
-      s.name.toLowerCase().includes(search.toLowerCase()) ||
-      String(s.minAge).toLowerCase().includes(search.toLowerCase()) ||
-      String(s.maxAge).toLowerCase().includes(search.toLowerCase()) ||
-      s.description.toLowerCase().includes(search.toLowerCase()) ||
-      s._id.toLowerCase().includes(search.toLowerCase())
-  );
-
-  const handleSearch = () => {
-    setSearch(searchInput);
-  };
-
   return (
     <div className="bg-white rounded-2xl p-5 mt-5">
       <div className='flex justify-start items-center mb-5'>
@@ -127,10 +110,6 @@ const AgeGroups = () => {
           <h2 className='text-3xl font-bold text-black'>Yaş Grupları</h2>
         </div>
         <div className='w-2/5 flex justify-end items-center gap-3.5'>
-          <div className='hidden search relative rounded-full border border-gray-300 px-3 py-1.5 gap-2.5 lg:flex justify-center items-center'>
-            <SearchIcon onClick={handleSearch} className='text-gray-400 cursor-pointer' />
-            <Input placeholder='ID yada Adı ve Soyadı ile ara' className='text-xs! min-w-60' value={searchInput} onChange={e => setSearchInput(e.target.value)} onKeyDown={e => {if(e.key === 'Enter') handleSearch();}} />
-          </div>
           <Tooltip title="Filtrele">
             <Button variant="contained" className='text-xs! w-10 h-10 rounded-full! bg-indigo-600! hover:bg-indigo-700! transition-all duration-300' onClick={() => window.location.href = '/signup'}>
               <FilterAltIcon />
@@ -144,59 +123,59 @@ const AgeGroups = () => {
         </div>
       </div>
 
-      {filteredStudents.length > 0
+      {agegroups.length > 0
         ? <TableContainer component={Paper}>
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell>ID</TableCell>
-              <TableCell>Adı</TableCell>
-              <TableCell>Yaş Aralığı</TableCell>
-              <TableCell>Açıklama</TableCell>
-              <TableCell>İşlemler</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {filteredStudents.map((agegroupstItem) => (
-              <TableRow key={agegroupstItem._id}
-                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-              >
-                <TableCell>{agegroupstItem._id}</TableCell>
-                <TableCell>{agegroupstItem.name}</TableCell>
-                <TableCell>{agegroupstItem.minAge} - {agegroupstItem.maxAge}</TableCell>
-                <TableCell>{agegroupstItem.description}</TableCell>
-                <TableCell>
-                  <div className='flex justify-start items-center gap-2'>
-                    <Button size='small' variant="contained" onClick={handleOpen('right', true)} className='text-xs! bg-green-300! hover:bg-green-700! transition-all duration-300 shadow-none!'>
-                      Güncelle
-                    </Button>
-                    <Dialog
-                      open={confirm}
-                      onClose={handleCloseConfirm}
-                    >
-                      <DialogTitle style={{ cursor: 'move' }} id="draggable-dialog-title">
-                        Grubu Sil
-                      </DialogTitle>
-                      <DialogContent>
-                        <DialogContentText>
-                          Grubu silmek istediğine eminmisin? Bu işlem geri alınamaz!.
-                        </DialogContentText>
-                      </DialogContent>
-                      <DialogActions>
-                        <Button autoFocus onClick={handleCloseConfirm}>
-                          Vazgeç
-                        </Button>
-                        <Button variant="contained" onClick={handleDeleteStudent.bind(null, agegroupstItem._id)} className='bg-red-600 hover:bg-red-700 transition-all duration-300'>Sil</Button>
-                      </DialogActions>
-                    </Dialog>
-                    <Button size='small' variant="contained" onClick={handleOpenConfirm} className='text-xs! bg-red-300! hover:bg-red-700! transition-all duration-300 shadow-none!'>
-                      Sil
-                    </Button>
-                  </div>
-                </TableCell>
+            <TableHead>
+              <TableRow>
+                <TableCell>ID</TableCell>
+                <TableCell>Adı</TableCell>
+                <TableCell>Yaş Aralığı</TableCell>
+                <TableCell>Açıklama</TableCell>
+                <TableCell>İşlemler</TableCell>
               </TableRow>
-            ))}
-          </TableBody>
+            </TableHead>
+            <TableBody>
+              {agegroups.map((agegroupstItem) => (
+                <TableRow key={agegroupstItem._id}
+                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                >
+                  <TableCell>{agegroupstItem._id}</TableCell>
+                  <TableCell>{agegroupstItem.name}</TableCell>
+                  <TableCell>{agegroupstItem.minAge} - {agegroupstItem.maxAge}</TableCell>
+                  <TableCell>{agegroupstItem.description}</TableCell>
+                  <TableCell>
+                    <div className='flex justify-start items-center gap-2'>
+                      <Button size='small' variant="contained" onClick={handleOpen('right', true)} className='text-xs! bg-green-300! hover:bg-green-700! transition-all duration-300 shadow-none!'>
+                        Güncelle
+                      </Button>
+                      <Dialog
+                        open={confirm}
+                        onClose={handleCloseConfirm}
+                      >
+                        <DialogTitle style={{ cursor: 'move' }} id="draggable-dialog-title">
+                          Grubu Sil
+                        </DialogTitle>
+                        <DialogContent>
+                          <DialogContentText>
+                            Grubu silmek istediğine eminmisin? Bu işlem geri alınamaz!.
+                          </DialogContentText>
+                        </DialogContent>
+                        <DialogActions>
+                          <Button autoFocus onClick={handleCloseConfirm}>
+                            Vazgeç
+                          </Button>
+                          <Button variant="contained" onClick={handleDeleteStudent.bind(null, agegroupstItem._id)} className='bg-red-600 hover:bg-red-700 transition-all duration-300'>Sil</Button>
+                        </DialogActions>
+                      </Dialog>
+                      <Button size='small' variant="contained" onClick={handleOpenConfirm} className='text-xs! bg-red-300! hover:bg-red-700! transition-all duration-300 shadow-none!'>
+                        Sil
+                      </Button>
+                    </div>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
           </Table>
         </TableContainer>
         : 'yok'}
@@ -230,7 +209,7 @@ const AgeGroups = () => {
 
             <div className='flex justify-start items-center mb-3 gap-5'>
               <label className='text-sm font-semibold min-w-28'>Üst Yaş</label>
-              <span className='w-1.5' />
+              <span className='text-xs text-red-500 font-semibold w-[5px]'>*</span>
               <input disabled={loading} type="text" value={maxAge} onChange={(e) => setmaxAge(e.target.value)} placeholder='Üst Yaş' className='w-96 h-10 border border-gray-300 rounded-md px-3 mb-3 outline-0' />
             </div>
 

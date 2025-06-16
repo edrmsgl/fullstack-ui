@@ -17,7 +17,7 @@ import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 
 const MenuItems = [
   { icon: <HomeIcon />, title: 'Anasayfa', url: '/dashboard/admin' },
-  { icon: <SchoolIcon />, title: 'Eğitmenler', url: '/dashboard/teachers' },
+  { icon: <SchoolIcon />, title: 'Eğitmenler', url: '/dashboard/instructors' },
   { icon: <GroupIcon />, title: 'Öğrenciler', url: '/dashboard/students' },
   { icon: <Diversity3Icon />, title: 'Yaş Grupları', url: '/dashboard/agegroups' },
   { icon: <SportsIcon />, title: 'Spor Dalları', url: '/dashboard/branches' },

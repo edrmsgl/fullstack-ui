@@ -89,6 +89,11 @@ const Students = () => {
       return;
     }
 
+    if (parentphone && !/^\d{10}$/.test(phone)) {
+      alert("Telefon numarası 10 haneli olmalıdır.");
+      return;
+    }
+
     if (!name || !surname || !picture || !parentname || !parentsurname || !parentphone || !dob || !address) {
       alert("Tüm alanlar zorunludur.");
       return;
